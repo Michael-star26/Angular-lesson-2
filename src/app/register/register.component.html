@@ -1,0 +1,115 @@
+<div class="m-4">
+    <div class="ui card d-flex m-auto p-3">
+        <div class="m-auto">
+            <label class="ui teal basic pointing below label">Register to proceed</label>
+        </div>
+        <form class="ui form">
+            @if(username.invalid && (username.dirty||username.touched)){
+            <div class="ui small required  error field">
+                <label for="name">Username Required</label>
+                <div class="ui left icon input">
+                    <input type="text" id="name" [formControl]="username" placeholder="Your name">
+                    <i class="user icon"></i>
+                </div>
+            </div>
+            }@else if(!(username.invalid)){
+                <div class="ui small required  success field">
+                    <label for="name">Username Required</label>
+                    <div class="ui left icon input">
+                        <input type="text" id="name" [formControl]="username" placeholder="Your name">
+                        <i class="user icon"></i>
+                    </div>
+                </div>
+            }@else{
+                 <div class="ui small required  info field">
+                    <label for="name" class="ui">Enter Username</label>
+                    <div class="ui red left icon input">
+                        <input type="text" id="name" [formControl]="username" placeholder="Your name">
+                        <i class="user icon"></i>
+                    </div>
+                </div>
+                }
+
+            
+            @if(useremail.invalid && (useremail.dirty||useremail.touched)){    
+            <div class="ui small  required error field">
+                <label for="email">Email Required</label>
+                <div class="ui left icon input">
+                    <input type="email" id="email" [formControl]="useremail" placeholder="Your Email">
+                    <i class="envelope icon"></i>
+                </div>
+            </div>
+        }@else if(!(useremail.invalid)){
+            <div class="ui small  required success field">
+                <label for="email">Email Required</label>
+                <div class="ui left icon input">
+                    <input type="email" id="email" [formControl]="useremail" placeholder="Your Email">
+                    <i class="envelope icon"></i>
+                </div>
+            </div>
+        }@else{
+            <div class="ui small  required info field">
+                <label for="email">Enter Email</label>
+                <div class="ui left icon input">
+                    <input type="email" id="email" [formControl]="useremail" placeholder="Your Email">
+                    <i class="envelope icon"></i>
+                </div>
+            </div>
+        }
+
+        @if(password.hasError('minlength')){
+                <div class="ui small required error field">
+                    <label for="password">Password must be atleast 8 characters</label>
+                    <div class="ui left icon input">
+                        <input type="password" id="password" [formControl]="password" placeholder="Your Password">
+                        <i class="eye slash icon"></i>
+                    </div>
+                </div>
+            }@else if(!(password.invalid)){  
+                <div class="ui small required success field">
+                    <label for="password">Enter Password</label>
+                    <div class="ui left icon input">
+                        <input type="password" id="password" [formControl]="password" placeholder="Your Password">
+                        <i class="eye slash icon"></i>
+                    </div>
+                </div>
+            }@else{
+                <div class="ui small required info field">
+                    <label for="password">Enter Password</label>
+                    <div class="ui left icon input">
+                        <input type="password" id="password" [formControl]="password" placeholder="Your Password">
+                        <i class="eye slash icon"></i>
+                    </div>
+                </div>
+            }
+
+            @if(cPassword.invalid){
+                <div class="ui small required warning field">
+                    <label for="cPassword">Confirm Passwords</label>
+                    <label for="cPassword">{{match}}</label>
+                    <div class="ui left icon input">
+                        <input (keydown)="passmatchPassword()"  type="password" id="cPassword" [formControl]="cPassword" placeholder="Confirm Password">
+                        <i class="eye slash icon"></i>
+                    </div>
+                </div>
+            }@else{
+            <div class="ui small required info field">
+                <label for="cPassword">Confirm Password</label>
+                <label for="cPassword">{{match}}</label>
+                <div class="ui left icon input">
+                    <input type="password" id="cPassword" [formControl]="cPassword" (keydown)="passmatchPassword()" placeholder="Confirm Password">
+                    <i class="eye slash icon"></i>
+                </div>
+            </div>
+        }
+            <div>
+                <button type="submit" class="ui tiny positive button d-flex m-auto">Register</button>
+            </div>
+            <div class="ui horizontal divider">Or</div>
+        </form>
+        <div class="d-flex m-auto">
+            <p>Have an Account? <span><a routerLink="/login">Login</a></span></p>
+        </div>
+    </div>
+    <router-outlet></router-outlet>    
+</div>

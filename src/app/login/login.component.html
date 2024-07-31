@@ -1,0 +1,33 @@
+<div class="m-5">
+    <div class="ui card d-flex m-auto p-4">
+        <div class="m-auto">
+            <label class="ui pointing below teal basic  label">Login</label>
+        </div>
+        <form class="ui form">
+            <div class="ui small  required info field">
+                <label for="email">Enter Email</label>
+                <div class="ui left icon input">
+                    <input type="email" id="email" [formControl]="useremail" placeholder="Your Email">
+                    <i class="envelope icon"></i>
+                </div>
+            </div>
+    
+            <div class="ui small required info field">
+                <label for="password">Enter Password</label>
+                <div class="ui left icon input">
+                    <input type="password" id="password" [formControl]="password" placeholder="Your Password">
+                    <i class="eye slash icon"></i>
+                </div>    
+            </div>
+
+            <div>
+                <button type="button" class="ui tiny positive button d-flex m-auto">Login</button>
+            </div>
+            <div class="ui horizontal divider">Or</div>
+        </form>
+        <div class="d-flex m-auto">
+            <p>Don't have an account? <span><a routerLink="/register">Register</a></span></p>
+        </div>
+    </div>
+    <router-outlet></router-outlet>    
+</div>
